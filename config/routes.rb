@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :payment_by_students
   resources :payments
   resources :pays
   get 'home/index'

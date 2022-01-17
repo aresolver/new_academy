@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_03_204323) do
+ActiveRecord::Schema.define(version: 2022_01_17_133323) do
 
   create_table "parents", force: :cascade do |t|
     t.string "name"
@@ -18,6 +18,17 @@ ActiveRecord::Schema.define(version: 2022_01_03_204323) do
     t.string "mobile"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "payment_by_students", force: :cascade do |t|
+    t.integer "student_id", null: false
+    t.integer "payment_id", null: false
+    t.decimal "amount_usd", precision: 5, scale: 2
+    t.decimal "amount_bs", precision: 8, scale: 2
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["payment_id"], name: "index_payment_by_students_on_payment_id"
+    t.index ["student_id"], name: "index_payment_by_students_on_student_id"
   end
 
   create_table "payments", force: :cascade do |t|
@@ -61,6 +72,8 @@ ActiveRecord::Schema.define(version: 2022_01_03_204323) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "payment_by_students", "payments"
+  add_foreign_key "payment_by_students", "students"
   add_foreign_key "payments", "parents"
   add_foreign_key "students", "parents"
   add_foreign_key "tutorings", "students"
