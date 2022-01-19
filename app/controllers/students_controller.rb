@@ -13,6 +13,7 @@ class StudentsController < ApplicationController
   # GET /students/new
   def new
     @student = Student.new
+    @parents = Parent.order :name
   end
 
   # GET /students/1/edit

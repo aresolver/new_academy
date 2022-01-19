@@ -37,24 +37,18 @@
   </div>
 
   
-  <% if @tutoring.student.nil? || @tutoring.tutor.nil? %> <%# Nueva tutoria no usa selected value%>
+  <% if @student.parent.nil? %> <%# Nuevo alumno no usa selected value para el parent%>
     <div class="field">
-	  <%= form.label :Tutor %>
-	  <%= select_tag "tutor_id", options_from_collection_for_select(@tutors, "id", "name")%>
+	  <%= form.label :Parent %>
+	  <%= select_tag "parent_id", options_from_collection_for_select(@parents, "id", "name")%>
     </div>
-	<div class="field">
-	  <%= form.label :Student %>
-	  <%= select_tag "student_id", options_from_collection_for_select(@students, "id", "name")%>
-    </div>
-  <% else %>
+
+  <% else %> <%# Si es edicion usar selected value para el parent%>
     <div class="field">
-      <%= form.label :Tutor %>		  
-      <%= select_tag "tutor_id", options_from_collection_for_select(@tutors, "id", "name", @tutoring.tutor.id)%>
+      <%= form.label :Parent %>		  
+      <%= select_tag "parent_id", options_from_collection_for_select(@parents, "id", "name", @student.parent.id)%>
     </div>
-	<div class="field">
-	  <%= form.label :Student %>  
-	  <%= select_tag "student_id", options_from_collection_for_select(@students, "id", "name", @tutoring.student.id)%>
-    </div>
+
   <% end %>
 
   <div class="actions">
