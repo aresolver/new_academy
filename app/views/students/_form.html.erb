@@ -36,10 +36,20 @@
     <%= form.text_field :mobile %>
   </div>
 
-  <div class="field">
-    <%= form.label :parent_id %>
-    <%= form.text_field :parent_id %>
-  </div>
+  
+  <% if @student.parent.nil? %> <%# Nuevo alumno no usa selected value para el parent%>
+    <div class="field">
+	  <%= form.label :Parent %>
+	  <%= select_tag "parent_id", options_from_collection_for_select(@parents, "id", "name")%>
+    </div>
+
+  <% else %> <%# Si es edicion usar selected value para el parent%>
+    <div class="field">
+      <%= form.label :Parent %>		  
+      <%= select_tag "parent_id", options_from_collection_for_select(@parents, "id", "name", @student.parent.id)%>
+    </div>
+
+  <% end %>
 
   <div class="actions">
     <%= form.submit %>
