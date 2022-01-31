@@ -3,7 +3,7 @@ class TutorsController < ApplicationController
 
   # GET /tutors or /tutors.json
   def index
-    @tutors = Tutor.all
+    @tutors = Tutor.order(:name)
   end
 
   # GET /tutors/1 or /tutors/1.json
