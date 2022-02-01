@@ -19,7 +19,9 @@ class StudentsController < ApplicationController
   end
 
   # GET /students/1/edit
-  def edit; end
+  def edit 
+    @parents = Parent.order(:name)
+  end
 
   # POST /students or /students.json
   def create
