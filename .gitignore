@@ -1,6 +1,5 @@
 tmp/
 .DS_Store
-
 log/
 node_modules/
 public/
