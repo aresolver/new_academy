@@ -26,6 +26,9 @@ class StudentsController < ApplicationController
   # POST /students or /students.json
   def create
     @student = Student.new(student_params)
+    @parents = Parent.order(:name)
+    
+    @student.parent_id = params[:parent_id]
 
     respond_to do |format|
       if @student.save

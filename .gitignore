@@ -3,3 +3,7 @@ tmp/
 log/
 node_modules/
 public/
+*.yml
+*.yml*~
+.*~
+.vscode/

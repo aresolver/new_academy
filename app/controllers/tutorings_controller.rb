@@ -28,7 +28,8 @@ class TutoringsController < ApplicationController
   end
 
   # POST /tutorings or /tutorings.json
-  def create # rubocop:disable Metrics/MethodLength
+  def create
+    # @tutoring = Tutoring.create(student_id: params[:student_id], tutor_id: params[:tutor_id])
     @tutoring = Tutoring.new(tutoring_params)
     @tutoring.student_id = params[:student_id]
     @tutoring.tutor_id = params[:tutor_id]
@@ -44,7 +45,7 @@ class TutoringsController < ApplicationController
   end
 
   # PATCH/PUT /tutorings/1 or /tutorings/1.json
-  def update # rubocop:disable Metrics/MethodLength
+  def update
     student_id = params[:student_id]
     tutor_id = params[:tutor_id]
     @tutoring.update(student_id: student_id, tutor_id: tutor_id)
