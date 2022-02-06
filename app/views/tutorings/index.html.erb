@@ -2,6 +2,15 @@
 
 <h1>Tutorings</h1>
 
+
+<form>
+	<div class="field">	  
+	  <%= select_tag "student_id", options_from_collection_for_select(@students, "id", "name")%>
+    <input type='submit' value='Enviar'>
+  </div>
+
+</form>
+
 <table>
   <thead>
     <tr>
@@ -32,4 +41,7 @@
 
 <br>
 <%= link_to 'Home', root_url %> |
-<%= link_to 'New Tutoring', new_tutoring_path %>
+<%= link_to 'New Tutoring', new_tutoring_path %> |
+<%= link_to 'All Tutorings', tutorings_path %>
+
+

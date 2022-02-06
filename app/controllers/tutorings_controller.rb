@@ -8,7 +8,14 @@ class TutoringsController < ApplicationController
   def index
     # sorted = Tutoring.all.sort_by {|t| t.date}
     # @tutorings = sorted.reverse
-    @tutorings = Tutoring.order(date: :desc, start: :asc)
+    student_id = params[:student_id]
+    @students = Student.order(:name)
+    if student_id.nil? 
+      @tutorings = Tutoring.order(date: :desc, start: :asc)
+      
+    else
+      @tutorings = Tutoring.where(student_id: student_id).order(date: :desc, start: :asc)
+    end
   end
 
   # GET /tutorings/1 or /tutorings/1.json
