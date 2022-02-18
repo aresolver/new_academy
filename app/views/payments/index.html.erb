@@ -2,6 +2,14 @@
 
 <h1>Payments</h1>
 
+<form>
+	  <div class="field">	  
+	  <input type='date' name='date_from' value= <%= @date_from %> >
+    <input type='date' name='date_to' value= <%= @date_to %> >
+    <input type='submit' value='Enviar'>
+  </div>
+</form>
+
 <table>
   <thead>
     <tr>
@@ -26,6 +34,17 @@
       </tr>
     <% end %>
   </tbody>
+  <tfoot>
+    <tr>
+      <td>Total</td>
+      <td><%= @total_usd %></td>
+      <td><%= @total_bs %></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>            
+    </tr>
+  </tfoot>
 </table>
 
 <br>

@@ -6,7 +6,23 @@ class PaymentsController < ApplicationController
 
   # GET /payments or /payments.json
   def index
-    @payments = Payment.order(date: :desc)
+    @date_from= params[:date_from]
+    @date_to= params[:date_to]
+    if @date_from.nil? and @date_to.nil? 
+      @date_to = Date.today
+      @date_from = @date_to - @date_to.mday + 1
+      @payments = Payment.where('date >= :date_from AND date <= :date_to',
+        {date_from: @date_from, date_to: @date_to}).order(date: :desc)
+    elsif  @date_from.nil? and !@date_to.nil?
+      @payments = Payment.where('date <= :date_to',{date_to: @date_to}).order(date: :desc)
+    elsif  !@date_from.nil? and @date_to.nil?
+      @payments = Payment.where('date >= :date_from',{date_from: @date_from}).order(date: :desc)
+    else
+      @payments = Payment.where('date >= :date_from AND date <= :date_to',
+          {date_from: @date_from, date_to: @date_to}).order(date: :desc)
+    end
+    @total_usd = @payments.sum('amount_usd').to_f
+    @total_bs = @payments.sum('amount_bs').to_f
   end
 
   # GET /payments/1 or /payments/1.json

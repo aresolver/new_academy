@@ -9,12 +9,17 @@ class TutoringsController < ApplicationController
     # sorted = Tutoring.all.sort_by {|t| t.date}
     # @tutorings = sorted.reverse
     student_id = params[:student_id]
+    @date= params[:date]
     @students = Student.order(:name)
     @tutorings = if student_id.nil?
                    Tutoring.order(date: :desc, start: :asc)
                  else
                    Tutoring.where(student_id: student_id).order(date: :desc, start: :asc)
                  end
+    if @date.nil?
+      @date = Date.today  
+    end
+    @tutorings = Tutoring.where(date: @date).order(date: :desc, start: :asc)              
   end
 
   # GET /tutorings/1 or /tutorings/1.json
