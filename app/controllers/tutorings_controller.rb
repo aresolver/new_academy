@@ -16,10 +16,10 @@ class TutoringsController < ApplicationController
                  else
                    Tutoring.where(student_id: student_id).order(date: :desc, start: :asc)
                  end
-    if @date.nil?
-      @date = Date.today  
-    end
-    @tutorings = Tutoring.where(date: @date).order(date: :desc, start: :asc)              
+    #if @date.nil?
+    #  @date = Date.today  
+    #end
+    #@tutorings = Tutoring.where(date: @date).order(date: :desc, start: :asc)              
   end
 
   # GET /tutorings/1 or /tutorings/1.json
