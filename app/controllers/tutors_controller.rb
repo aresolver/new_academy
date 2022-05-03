@@ -6,6 +6,7 @@ class TutorsController < ApplicationController
   # GET /tutors or /tutors.json
   def index
     @tutors = Tutor.order(:name)
+    render json: @tutors, except: [:created_at, :updated_at]
   end
 
   # GET /tutors/1 or /tutors/1.json
