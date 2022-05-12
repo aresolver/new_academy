@@ -1,27 +1,24 @@
-# README
+New Academy
+This is a Single Web Application - front end and a back end Rails.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+What you can do
+You can enter students, tutors, classes, parents and payments;
+search all classes related to one student; search payments for a time period
 
-Things you may want to cover:
+Install
+git clone https://github.com/aresolver/new_academy.git
 
-* Ruby version: 3.0.0
+Ruby version
+ruby 3.0.0p0
 
-* System dependencies: run
-$ bundle install
+Rails version
+Rails 6.1.4.1
 
-* Configuration
+Initialize the database
+rails db:create db:migrate db:seed
 
-* Database creation: run 
-$ db:create
-$ db:migrate
+Serve
+rails s 
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Run App
+open http://127.0.0.0:3000/
